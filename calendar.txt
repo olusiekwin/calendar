@@ -1,1 +1,24 @@
-# // // get-hour-string Function
+# // get-hour-string Function
+function get_hour_string($time){
+    $hour_string = "";
+    $hour = date("h",$time);
+    $ampm = date("a",$time);
+    $hour_string = "$hour:00$ampm";
+    return $hour_string;
+}
+$hours_to_show = 8;
+$timestamp = time();
+for($row = 0; $row <= $hours_to_show; $row++)
+{
+echo "<tr class=";
+if ($row % 2 == 0)
+    echo '"even_row">';
+else echo '"odd_row">';
+echo '<td class="hr_td">'. get_hour_string($timestamp) . "</td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "</tr>";
+$timestamp += 60 * 60;
+}
+?>
